@@ -1,0 +1,55 @@
+<div>
+
+    <h2 id="sceneTitle"></h2>
+    <p id="sceneContent"></p>
+
+    <div id="sceneChoices"></div>
+
+</div>
+
+<script>
+
+    const scenes = [
+        {id:"scene1",title:"title 1",content:"content1", choices:[
+            {choiceText:"choice 1",choiceLink:"scene2"},
+            {choiceText:"choice 2",choiceLink:"scene3"},
+        ]}
+
+
+
+    ]
+
+
+    function setScene(targetScene){
+        var scene = scenes.find(scene => scene.id == targetScene)
+
+        document.getElementById("sceneTitle").innerText = scene.title
+        document.getElementById("sceneContent").innerText = scene.content
+
+        document.getElementById("sceneChoices").innerHTML = ""
+
+        if(scene.choices){
+            scene.choices.forEach(displayChoice)
+        }
+
+
+    }
+
+    function displayChoice(choice,index){
+        let choiceEl = document.createElement("p")
+        choiceEl.classList.add("choice")
+
+        if(true){
+            choiceEl.setAttribute("onclick","setScene("+choice.choiceLink+")")
+        }
+
+        document.getElementById("sceneChoices").appendChild(choiceEl)
+
+    }
+
+
+
+
+
+
+</script>
